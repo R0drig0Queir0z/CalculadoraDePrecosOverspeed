@@ -222,6 +222,7 @@
                     <input class="value-input" type="text" id="resultado" value="0" readonly>
                     <button type="button" onclick="aplicarDesconto5()">5% DE DESCONTO</button>
                     <button type="button" onclick="aplicarDesconto10()">10% DE DESCONTO</button>
+                    <button type="button" onclick="aplicarDesconto20()">20% DE DESCONTO(APENAS PARCERIA)</button>
 
                     <button type="button" onclick="limparTudo()">LIMPAR RESULTADOS</button>
                 </fieldset>
@@ -260,6 +261,20 @@
             valorDescontado = valorAtual - (valorAtual * (10 / 100));
             resultadoInput.value = "R$" + valorDescontado.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 
+        }
+
+        function aplicarDesconto20() {
+            const resultadoInput = document.getElementById("resultado");
+            const valorAtual = parseFloat(resultadoInput.value.replace("R$", "").replace(/\./g, "").replace(",", "."));
+            let valorDescontado;
+
+            if (valorAtual >= 300.000){
+
+                valorDescontado = valorAtual - (valorAtual * (20 / 100));
+                resultadoInput.value = "R$" + valorDescontado.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });}
+            else{
+                    alert("❌ O desconto de 20% só pode ser aplicado para valores acima de R$ 300.000,00")
+                }
         }
 
         function calcularValor() {
